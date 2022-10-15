@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ComercioApp.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deposito.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proveedor.RazonSocial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deposito.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proveedor.RazonSocial)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NumeroSerie }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NumeroSerie }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NumeroSerie })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Ir al formulario de proveedores", "Index", "Proveedor")
+    @Html.ActionLink("Ir al formulario de depositos", "Index", "Deposito")
+</div>
